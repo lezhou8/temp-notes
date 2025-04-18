@@ -16,6 +16,18 @@ Make sure you have a Docker daemon running on your machine:
 dockerd
 ```
 
+Clone the repo.
+
+```
+git clone https://github.com/lezhou8/temp-notes.git
+```
+
+Navigate into the repo.
+
+```
+cd temp-notes
+```
+
 Then start the app using Docker Compose:
 
 ```
@@ -45,13 +57,13 @@ cd backend
 
 Run the test suite.
 
-### On Unix-based systems:
+On Unix-based systems:
 
 ```
 ./gradlew test
 ```
 
-### On Windows:
+On Windows:
 
 ```
 gradlew.bat test
