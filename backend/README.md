@@ -20,6 +20,8 @@ GET /api/note/:uuid
 }
 ```
 
+***
+
 ```
 POST /api/note
 ```
@@ -37,6 +39,8 @@ POST /api/note
     "expiry": "2025-04-18T12:00:00Z"
 }
 ```
+
+***
 
 ```
 PATCH /api/note/:uuid
