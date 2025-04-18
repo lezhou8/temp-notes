@@ -16,7 +16,6 @@ document.addEventListener("DOMContentLoaded", () => {
 			if (textarea) textarea.value = data.content || "";
 			const expirySpan = document.getElementById("expiry-text");
 			if (expirySpan) expirySpan.textContent = new Date(data.expiry).toLocaleString();
-			document.cookie = `uuid=${data.uuid}; path=/; expires=${new Date(data.expiry).toUTCString()}`;
 		})
 		.catch(error => {
 			console.error(error);

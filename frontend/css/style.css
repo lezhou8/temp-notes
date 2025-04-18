@@ -26,3 +26,8 @@ textarea {
 	resize: none;
 	outline: none;
 }
+
+#cookie-consent-banner {
+	margin-left: auto;
+	margin-right: auto;
+}
