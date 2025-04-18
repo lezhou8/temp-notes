@@ -35,7 +35,7 @@ POST /api/note
 ```
 {
     "uuid": "00000000-0000-0000-0000-000000000000",
-    "content": "some text",
+    "content": "",
     "expiry": "2025-04-18T12:00:00Z"
 }
 ```
