@@ -16,6 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
 			if (textarea) textarea.value = data.content || "";
 			const expirySpan = document.getElementById("expiry-text");
 			if (expirySpan) expirySpan.textContent = new Date(data.expiry).toLocaleString();
+			document.cookie = `uuid=${data.uuid}; path=/; expires=${new Date(data.expiry).toUTCString()}`;
 		})
 		.catch(error => {
 			console.error(error);
@@ -26,6 +27,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
 	button.addEventListener("click", () => {
 		const content = document.getElementById("content-area")?.value ?? "";
+
+		const MAX_LENGTH = 5000;
+		if (content.length > MAX_LENGTH) {
+			alert(`Note is too long. Maximum length is ${MAX_LENGTH} characters.`);
+			return;
+		}
+
 		fetch(`/api/note/${encodeURIComponent(uuid)}`, {
 			method: "PATCH",
 			headers: { "content-type": "application/json" },

@@ -22,20 +22,20 @@ class TempNotesController(private val noteRepository: NoteRepository) {
 		return if (note.isPresent)
 			ResponseEntity.ok(note.get())
 		else
-			ResponseEntity.status(404).body("Did not find the UUID in database")
+			ResponseEntity.status(HttpStatus.NOT_FOUND).body("Did not find the UUID in database")
 	}
 
 	@PostMapping
 	fun newNote(): ResponseEntity<Any> {
 		val MAX_NOTES = 100L
 		if (noteRepository.count() >= MAX_NOTES)
-			return ResponseEntity.status(429).body("Database has too many notes")
+			return ResponseEntity.status(HttpStatus.TOO_MANY_REQUESTS).body("Database has too many notes")
 
 		try {
 			val savedNote = noteRepository.save(Note())
-			return ResponseEntity.status(201).body(savedNote)
+			return ResponseEntity.status(HttpStatus.CREATED).body(savedNote)
 		} catch (e: Exception) {
-			return ResponseEntity.status(500).body("Failed to create a note")
+			return ResponseEntity.internalServerError().body("Failed to create a note")
 		}
 	}
 
@@ -43,7 +43,7 @@ class TempNotesController(private val noteRepository: NoteRepository) {
 	fun updateNote(@PathVariable uuid: UUID, @RequestBody body: Map<String, String>): ResponseEntity<Any> {
 		val noteOptional = noteRepository.findById(uuid)
 		if (!noteOptional.isPresent)
-			return ResponseEntity.status(404).body("Did not find the UUID in database")
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Did not find the UUID in database")
 
 		val newContent = body["content"]
 		if (newContent == null)
@@ -58,9 +58,9 @@ class TempNotesController(private val noteRepository: NoteRepository) {
 		note.content = newContent
 		try {
 			noteRepository.save(note)
-			return ResponseEntity.ok().build()
+			return ResponseEntity.noContent().build()
 		} catch (e: Exception) {
-			return ResponseEntity.status(500).body("Failed to update a note's content")
+			return ResponseEntity.internalServerError().body("Failed to update a note's content")
 		}
 	}
 }
