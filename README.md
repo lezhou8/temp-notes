@@ -28,6 +28,19 @@ Navigate into the repo.
 cd temp-notes
 ```
 
+Create a `.env` file:
+
+```
+cat <<EOF > .env
+DL_URL=jdbc:postgresql://db:5432/postgres
+POSTGRES_USER=<username>
+POSTGRES_PASSWORD=<password>
+POSTGRES_DB=postgres
+EOF
+```
+
+Replace `<username>` and `<password>` with your desired credentials.
+
 Then start the app using Docker Compose:
 
 ```
