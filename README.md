@@ -4,7 +4,7 @@ Create temporary notes without cluttering your local computer.
 
 ## About
 
-Tired of the mess on your device left by the creation of ad-hoc notes? Our site offers a cleaner and simpler way to take notes. Just write and go. Your notes persist across browser sessions, either through cookies our a unique URL. No account needed. Notes last for a week, so you can focus on what matters, not file management.
+Tired of the mess on your device left by the creation of ad-hoc notes? Our site offers a cleaner and simpler way to take notes. Just write and go. Your notes persist across browser sessions, either through cookies or a unique URL. No account needed. Notes last for a week, so you can focus on what matters, not file management.
 
 Try it [here](https://tempnotes.me).
 
